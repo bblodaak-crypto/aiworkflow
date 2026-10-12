@@ -4,6 +4,7 @@ extends SceneTree
 ##
 ## Запуск:
 ##   Godot --headless --path . --script res://tools/slice_props.gd -- <конфиг> [превью.png]
+## Превью — путь res://… (работает и на Windows, где путь из Git Bash Godot не понимает).
 ##
 ## Конфиг — JSON, образец — tools/props/example.json.sample. Объекты листа разделены
 ## пустым фоном: сначала ищутся ряды, затем объекты в ряду слева направо; `cell` — номер объекта
@@ -67,7 +68,7 @@ func _init() -> void:
 			_write_scene(config["scene_dir"], prop, png, sprite.get_size())
 			sprites.append(sprite)
 	if args.size() == 2:
-		_write_preview(sprites, args[1])
+		_write_preview(sprites, ProjectSettings.globalize_path(args[1]))
 	print("Готово: объектов %d" % sprites.size())
 	quit()
 

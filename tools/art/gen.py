@@ -168,7 +168,8 @@ def find_image(log_text: str, target: Path, since: float, codex_home: Path) -> P
     """Картинка задачи: скопированная Codex, путь из лога или папка сессии в generated_images."""
     if target.is_file() and target.stat().st_mtime >= since - 1:
         return target
-    pattern = r"(/[^\s'\"`]*generated_images/[^\s'\"`]+?\.(?:png|webp|jpe?g))"
+    # Путь в логе: /Users/…/generated_images/… или C:\Users\…\generated_images\…
+    pattern = r"((?:[A-Za-z]:)?[\\/][^\s'\"`]*generated_images[\\/][^\s'\"`]+?\.(?:png|webp|jpe?g))"
     found = [Path(p) for p in re.findall(pattern, log_text)]
     found = [p for p in found if p.is_file() and p.stat().st_mtime >= since - 1]
     if not found:

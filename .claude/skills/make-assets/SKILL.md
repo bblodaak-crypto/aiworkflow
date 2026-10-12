@@ -38,7 +38,7 @@ description: Сгенерировать ассеты окружения чере
 Нарезать во временную папку, чтобы не трогать `assets/` и сцены до одобрения:
 
 1. Конфиг `build/art/<набор>/preview.json` — как `tools/props/example.json.sample`, но `"asset_dir": "res://build/art/<набор>/assets"`, `"scene_dir": "res://build/art/<набор>/scenes"`; `cell` — номер объекта слева направо, сверху вниз; `scale` подобрать по ориентирам роста SPRITE_SPEC («Холст и точка опоры»), для следующих наборов — по ширине уже нарезанных объектов той же темы (`docs/ASSET_CATALOG.md`).
-2. `"$GODOT" --headless --path . --script res://tools/slice_props.gd -- build/art/<набор>/preview.json "$PWD/build/art/<набор>/control.png"`.
+2. `"$GODOT" --headless --path . --script res://tools/slice_props.gd -- build/art/<набор>/preview.json res://build/art/<набор>/control.png`.
 3. Открыть `control.png` (слева — фигура героя, объекты в масштабе игры). Масштаб не тот — поправить `scale` и повторить.
 
 Показать пользователю путь к `control.png` и спросить `AskUserQuestion`: «А. Одобрить (рекомендую, если чек-лист пройден) / Б. Перегенерировать объекты N… / В. Поправить масштаб». Ответ записать в `design/concepts/<набор>/README.md`: состав листа по ячейкам, дата и решение пользователя, что исправлялось.

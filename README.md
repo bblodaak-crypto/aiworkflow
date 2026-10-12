@@ -12,7 +12,8 @@
 
 ## Что нужно
 
-- macOS или Linux, Godot 4.4+ (проверено на 4.7), Python 3.10+, `git`, `jq`, Node.js (для MCP и Codex CLI).
+- macOS, Linux или Windows; Godot 4.4+ (проверено на 4.7), Python 3.10+, `git`, `make`, Node.js (для MCP и Codex CLI).
+- **Windows:** команды идут в Git Bash (его ставит и использует сама Claude Code). Поставить всё одной командой в PowerShell — `winget install Git.Git Python.Python.3.12 ezwinports.make OpenJS.NodeJS.LTS GodotEngine.GodotEngine`; подробности и отличия — `docs/WORKFLOW.md`, «Windows».
 - Claude Code (терминал или приложение Claude, вкладка Code).
 - Для генерации ассетов — подписка ChatGPT и Codex CLI (`npm i -g @openai/codex`, `codex login`).
 

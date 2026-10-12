@@ -1,0 +1,5 @@
+# Одинаковые переводы строк на macOS, Linux и Windows: CRLF ломает .sh-хуки и сравнение сцен.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary

@@ -30,7 +30,9 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TRANSCRIPTS = Path.home() / ".claude" / "projects" / str(ROOT).replace("/", "-")
+# Claude Code называет папку проекта путём, где всё кроме букв и цифр — дефис:
+# /Users/me/game → -Users-me-game, C:\Users\me\game → C--Users-me-game.
+TRANSCRIPTS = Path.home() / ".claude" / "projects" / re.sub(r"[^A-Za-z0-9]", "-", str(ROOT))
 SNAPSHOTS = ROOT / "docs" / "usage"
 WORK_PATHS = ("src", "tests", "data")
 

@@ -2,6 +2,18 @@
 
 Инструменты, сборка и порядок работы агентов. Правила — в [AGENTS.md](../AGENTS.md); здесь — подробности и настройки.
 
+## Windows
+
+Шаблон работает на macOS, Linux и Windows. На Windows Claude Code выполняет команды в Git Bash, поэтому команды из документов те же, с отличиями:
+
+- **Нужно поставить** (PowerShell): `winget install Git.Git Python.Python.3.12 ezwinports.make OpenJS.NodeJS.LTS GodotEngine.GodotEngine`. Godot можно и скачать архивом: тогда путь к `.exe` (не `_console.exe`) — в переменной `GODOT`, например `setx GODOT "C:/Godot/Godot_v4.7-stable_win64.exe"`, и перезапустить Claude.
+- **Python** называется `python`, не `python3`: Makefile выбирает его сам (`PYTHON`), а в командах из документов `python3` заменять на `python`. Окружение — `.venv/Scripts`, тоже само.
+- **Пути для Godot** — `res://…` или `C:/…`; путь вида `/c/Users/…` из Git Bash Godot не понимает (скилл `make-assets` уже передаёт `res://`).
+- **Переводы строк** — LF для всех файлов (`.gitattributes`); если репозиторий клонирован до него: `git add --renormalize .`.
+- **LSP** — `make lsp` запускает и останавливает редактор через `tools/lsp.py` (без `nc` и `pkill`).
+- **MCP `godot`** — в `GODOT_PATH` путь к `.exe` с прямыми слешами.
+- **Codex CLI** — `npm i -g @openai/codex`, `codex login`; `gen.py` находит `codex.cmd` сам.
+
 ## Генерация ассетов
 
 Claude генерирует ассеты сам ([ADR-0001](decisions/0001-asset-generation-pipeline.md), скилл `make-assets`): `tools/art/gen.py` вызывает `codex exec` со встроенным `image_gen` (ChatGPT по подписке, без ключа API). Эталон `design/reference/style.png` прикладывается первым всегда; без него `gen.py` отказывается работать. Фон — ровный белый, его снимает `tools/image_matte.gd`.

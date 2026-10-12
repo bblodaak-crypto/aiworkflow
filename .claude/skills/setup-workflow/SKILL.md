@@ -14,7 +14,7 @@ description: Развернуть рабочий процесс шаблона �
 Одним вызовом:
 
 ```bash
-git status --short | head; ls; grep -rl '{{' --include=*.md . | grep -v '^./.claude/skills/setup-workflow'; test -f project.godot && grep -n 'config/name\|run/main_scene\|\[autoload\]' project.godot; ls src tests addons 2>/dev/null | head -30; command -v godot codex python3; ls /Applications/Godot*.app 2>/dev/null
+uname -s; git status --short | head; ls; grep -rl '{{' --include=*.md . | grep -v '^./.claude/skills/setup-workflow'; test -f project.godot && grep -n 'config/name\|run/main_scene\|\[autoload\]' project.godot; ls src tests addons 2>/dev/null | head -30; command -v godot codex python3 python make; echo "GODOT=$GODOT"; ls /Applications/Godot*.app 2>/dev/null
 ```
 
 - **Новый проект** — в папке только файлы шаблона: всё ставится как есть.
@@ -51,7 +51,7 @@ git status --short | head; ls; grep -rl '{{' --include=*.md . | grep -v '^./.cla
 
 ## 5. Инструменты
 
-Проверить и поставить то, что ставится без пароля; остальное — команды пользователю в отдельных блоках `bash`:
+Проверить и поставить то, что ставится без пароля; остальное — команды пользователю в отдельных блоках `bash`. На Windows (`uname -s` — `MINGW…`/`MSYS…`) — сначала WORKFLOW, «Windows»: нет `make`, Python или Godot — дать пользователю команду `winget` оттуда (PowerShell), `GODOT` — путь к `.exe`; вместо `python3` в командах — `python`.
 
 1. `make setup` (gdtoolkit в `.venv`), `make import`, `make check`. Чинить, пока не пройдёт.
 2. **LSP:** плагин ставит пользователь в Claude Code: `/plugin marketplace add minami110/claude-godot-tools`, затем `/plugin install gdscript-lsp@claude-godot-tools`; `make lsp`.
