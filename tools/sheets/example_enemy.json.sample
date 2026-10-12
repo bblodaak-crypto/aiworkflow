@@ -1,0 +1,10 @@
+{
+  "prefix": "wolf_",
+  "target_height": 215,
+  "matte": "flood",
+  "sheet_dir": "res://assets/enemies/wolf",
+  "anims": [
+    {"name": "move", "frames": 4, "fps": 10, "loop": true, "align": "centroid"},
+    {"name": "attack", "frames": 4, "fps": 8, "loop": false, "align": "centroid"}
+  ]
+}

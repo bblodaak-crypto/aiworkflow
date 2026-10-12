@@ -1,0 +1,16 @@
+{
+  "asset_dir": "res://assets/environment",
+  "scene_dir": "res://src/scenes/locations/props",
+  "sheets": [
+    {
+      "source": "res://design/concepts/<набор>/sheet_a.png",
+      "columns": 3,
+      "rows": 2,
+      "props": [
+        {"cell": 0, "name": "stone_block_long", "folder": "stone", "scale": 0.9},
+        {"cell": 1, "name": "fence_rails_a", "folder": "fence", "scale": 1.0, "lift": 20},
+        {"cell": 2, "name": "dry_grass", "folder": "plants", "scale": 0.8}
+      ]
+    }
+  ]
+}

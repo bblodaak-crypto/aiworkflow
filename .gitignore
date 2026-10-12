@@ -1,0 +1,20 @@
+# Godot: кэш редактора и импорта (в том числе export_credentials.cfg)
+.godot/
+
+# Сборки экспорта и временные файлы генерации ассетов (build/art/)
+/build/
+
+# Python: окружение инструментов и кэш
+.venv/
+__pycache__/
+*.pyc
+
+# Claude Code: личные настройки и временные копии проекта параллельных сессий
+.claude/settings.local.json
+.claude/worktrees/
+
+# macOS
+.DS_Store
+
+# Мост MCP godot на время запуска игры
+.mcp/

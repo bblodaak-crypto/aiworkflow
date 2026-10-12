@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make check)",
+      "Bash(make test)",
+      "Bash(make lint)",
+      "Bash(make format)",
+      "Bash(make format-check)",
+      "Bash(make import)",
+      "Bash(make lsp)",
+      "Bash(make toc)",
+      "Bash(make roadmap-check)",
+      "Bash(make catalog)",
+      "Bash(make assets-check)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "make -s -C \"$CLAUDE_PROJECT_DIR\" lsp",
+            "timeout": 40
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/format_gd.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "gdscript-lsp@claude-godot-tools": true
+  },
+  "env": {
+    "ENABLE_LSP_TOOL": "true"
+  }
+}

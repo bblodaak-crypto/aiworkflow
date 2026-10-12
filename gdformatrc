@@ -1,0 +1,10 @@
+excluded_directories: !!set
+  .git: null
+  .godot: null
+  .mcp: null
+  .venv: null
+  addons: null
+  prototypes: null
+line_length: 100
+safety_checks: null
+use_spaces: null
